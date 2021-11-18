@@ -1,0 +1,22 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sabrismithadflink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@utcnow()",
+					"type": "Expression"
+				},
+				"container": "project"
+			}
+		},
+		"schema": {}
+	}
+}

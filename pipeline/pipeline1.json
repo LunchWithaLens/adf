@@ -116,8 +116,8 @@
 				}
 			},
 			{
-				"name": "GetProjects",
-				"type": "WebActivity",
+				"name": "Copy data1",
+				"type": "Copy",
 				"dependsOn": [
 					{
 						"activity": "Set access token",
@@ -135,42 +135,1301 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://brismith.sharepoint.com/sites/pwa/_api/projectdata/Projects",
-					"connectVia": {
-						"referenceName": "irbrismithadf",
-						"type": "IntegrationRuntimeReference"
-					},
-					"method": "GET",
-					"headers": {
-						"Authorization": {
-							"value": "@concat('Bearer ',variables('token'))",
-							"type": "Expression"
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"additionalHeaders": {
+							"Authorization": {
+								"value": "@concat('Bearer ', variables('token'))",
+								"type": "Expression"
+							}
 						},
-						"Accept": "*/*",
-						"Accept-Encoding": "gzip, deflate, br",
-						"Connection": "keep-alive"
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['odata.metadata']"
+								},
+								"sink": {
+									"path": "$['odata.metadata']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['EnterpriseProjectTypeDescription']"
+								},
+								"sink": {
+									"path": "$['value'][0]['EnterpriseProjectTypeDescription']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['EnterpriseProjectTypeId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['EnterpriseProjectTypeId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['EnterpriseProjectTypeIsDefault']"
+								},
+								"sink": {
+									"path": "$['value'][0]['EnterpriseProjectTypeIsDefault']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['EnterpriseProjectTypeName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['EnterpriseProjectTypeName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['OptimizerCommitDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['OptimizerCommitDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['OptimizerDecisionAliasLookupTableId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['OptimizerDecisionAliasLookupTableId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['OptimizerDecisionAliasLookupTableValueId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['OptimizerDecisionAliasLookupTableValueId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['OptimizerDecisionID']"
+								},
+								"sink": {
+									"path": "$['value'][0]['OptimizerDecisionID']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['OptimizerDecisionName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['OptimizerDecisionName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['OptimizerSolutionName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['OptimizerSolutionName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ParentProjectId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ParentProjectId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['PlannerCommitDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['PlannerCommitDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['PlannerDecisionAliasLookupTableId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['PlannerDecisionAliasLookupTableId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['PlannerDecisionAliasLookupTableValueId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['PlannerDecisionAliasLookupTableValueId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['PlannerDecisionID']"
+								},
+								"sink": {
+									"path": "$['value'][0]['PlannerDecisionID']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['PlannerDecisionName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['PlannerDecisionName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['PlannerEndDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['PlannerEndDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['PlannerSolutionName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['PlannerSolutionName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['PlannerStartDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['PlannerStartDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectActualCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualDuration']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectActualDuration']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualFinishDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectActualFinishDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualOvertimeCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectActualOvertimeCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualOvertimeWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectActualOvertimeWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualRegularCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectActualRegularCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualRegularWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectActualRegularWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualStartDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectActualStartDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectActualWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectACWP']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectACWP']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectAuthorName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectAuthorName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectBCWP']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectBCWP']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectBCWS']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectBCWS']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectBudgetCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectBudgetCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectBudgetWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectBudgetWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCalculationsAreStale']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCalculationsAreStale']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCalendarDuration']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCalendarDuration']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCategoryName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCategoryName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCompanyName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCompanyName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCostVariance']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCostVariance']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCPI']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCPI']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCreatedDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCreatedDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCurrency']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCurrency']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCV']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCV']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCVP']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectCVP']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectDescription']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectDescription']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectDuration']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectDuration']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectDurationVariance']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectDurationVariance']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectEAC']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectEAC']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectEarlyFinish']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectEarlyFinish']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectEarlyStart']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectEarlyStart']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectEarnedValueIsStale']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectEarnedValueIsStale']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectEnterpriseFeatures']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectEnterpriseFeatures']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectFinishDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectFinishDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectFinishVariance']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectFinishVariance']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectFixedCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectFixedCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectIdentifier']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectIdentifier']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectKeywords']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectKeywords']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectLateFinish']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectLateFinish']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectLateStart']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectLateStart']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectLastPublishedDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectLastPublishedDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectManagerName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectManagerName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectModifiedDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectModifiedDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectOvertimeCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectOvertimeCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectOvertimeWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectOvertimeWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectOwnerId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectOwnerId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectOwnerName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectOwnerName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectPercentCompleted']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectPercentCompleted']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectPercentWorkCompleted']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectPercentWorkCompleted']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectRegularCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectRegularCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectRegularWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectRegularWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectRemainingCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectRemainingCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectRemainingDuration']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectRemainingDuration']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectRemainingOvertimeCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectRemainingOvertimeCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectRemainingOvertimeWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectRemainingOvertimeWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectRemainingRegularCost']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectRemainingRegularCost']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectRemainingRegularWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectRemainingRegularWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectRemainingWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectRemainingWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectResourcePlanWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectResourcePlanWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectSPI']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectSPI']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectStartDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectStartDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectStartVariance']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectStartVariance']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectStatusDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectStatusDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectSubject']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectSubject']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectSV']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectSV']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectSVP']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectSVP']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectTCPI']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectTCPI']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectTimephased']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectTimephased']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectTitle']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectTitle']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectType']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectVAC']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectVAC']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectWork']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectWork']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectWorkspaceInternalUrl']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectWorkspaceInternalUrl']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectWorkVariance']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectWorkVariance']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ResourcePlanUtilizationDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ResourcePlanUtilizationDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ResourcePlanUtilizationType']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ResourcePlanUtilizationType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['WorkflowCreatedDate']"
+								},
+								"sink": {
+									"path": "$['value'][0]['WorkflowCreatedDate']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['WorkflowError']"
+								},
+								"sink": {
+									"path": "$['value'][0]['WorkflowError']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['WorkflowErrorResponseCode']"
+								},
+								"sink": {
+									"path": "$['value'][0]['WorkflowErrorResponseCode']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['WorkflowInstanceId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['WorkflowInstanceId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['WorkflowOwnerId']"
+								},
+								"sink": {
+									"path": "$['value'][0]['WorkflowOwnerId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['WorkflowOwnerName']"
+								},
+								"sink": {
+									"path": "$['value'][0]['WorkflowOwnerName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectDepartments']"
+								},
+								"sink": {
+									"path": "$['value'][0]['ProjectDepartments']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CustomField_1']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CustomField_1']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CustomField_5']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CustomField_5']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CustomField_4']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CustomField_4']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CustomField_3']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CustomField_3']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CustomField_2']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CustomField_2']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['CSOM_CustomField_P_1']"
+								},
+								"sink": {
+									"path": "$['value'][0]['CSOM_CustomField_P_1']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['CSOM_CustomField_P2_1']"
+								},
+								"sink": {
+									"path": "$['value'][0]['CSOM_CustomField_P2_1']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['CSOM_CustomField_P3_1']"
+								},
+								"sink": {
+									"path": "$['value'][0]['CSOM_CustomField_P3_1']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['CSOM_CustomField_P4_1']"
+								},
+								"sink": {
+									"path": "$['value'][0]['CSOM_CustomField_P4_1']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['CSOM_CustomField_P5_1']"
+								},
+								"sink": {
+									"path": "$['value'][0]['CSOM_CustomField_P5_1']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_1']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_1']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_4']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_4']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_5']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_5']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_2']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_2']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_3']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_CostCustomField_3']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_1']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_1']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_2']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_2']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_4']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_4']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_5']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_5']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_3']"
+								},
+								"sink": {
+									"path": "$['value'][0]['xCSOM_DateCustomField_3']"
+								}
+							}
+						]
 					}
-				}
+				},
+				"inputs": [
+					{
+						"referenceName": "RestResource1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					}
+				]
 			},
 			{
-				"name": "Set variable1",
-				"type": "SetVariable",
+				"name": "Copy data1_copy1",
+				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "GetProjects",
+						"activity": "Set access token",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					}
 				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "response",
-					"value": {
-						"value": "@activity('GetProjects').output.response",
-						"type": "Expression"
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"additionalHeaders": {
+							"Authorization": {
+								"value": "@concat('Bearer ', variables('token'))",
+								"type": "Expression"
+							}
+						},
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['odata.metadata']"
+								},
+								"sink": {
+									"path": "$['odata.metadata']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectId']"
+								},
+								"sink": {
+									"name": "PROJ_UID"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualCost']"
+								},
+								"sink": {
+									"name": "PROJ_OPT_CALC_ACT_COSTS"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualFinishDate']"
+								},
+								"sink": {
+									"name": "PROJ_INFO_FINISH_DATE"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualStartDate']"
+								},
+								"sink": {
+									"name": "PROJ_INFO_START_DATE"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectAuthorName']"
+								},
+								"sink": {
+									"name": "PROJ_PROP_AUTHOR"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCategoryName']"
+								},
+								"sink": {
+									"name": "PROJ_PROP_CATEGORY"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCompanyName']"
+								},
+								"sink": {
+									"name": "PROJ_PROP_COMPANY"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCost']"
+								},
+								"sink": {
+									"name": "PROJ_OPT_CALC_ACT_COSTS"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCreatedDate']"
+								},
+								"sink": {
+									"name": "PROJ_CREATION_DATE"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCurrency']"
+								},
+								"sink": {
+									"name": "PROJ_OPT_CURRENCY_CODE"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectDescription']"
+								},
+								"sink": {
+									"name": "WPROJ_DESCRIPTION"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectFinishDate']"
+								},
+								"sink": {
+									"name": "PROJ_INFO_FINISH_DATE"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectIdentifier']"
+								},
+								"sink": {
+									"name": "PROJ_IDENTIFIER"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectKeywords']"
+								},
+								"sink": {
+									"name": "PROJ_PROP_KEYWORDS"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectLastPublishedDate']"
+								},
+								"sink": {
+									"name": "WPROJ_LAST_PUB"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectManagerName']"
+								},
+								"sink": {
+									"name": "PROJ_PROP_MANAGER"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectModifiedDate']"
+								},
+								"sink": {
+									"name": "MOD_DATE"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectName']"
+								},
+								"sink": {
+									"name": "PROJ_NAME"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectStartDate']"
+								},
+								"sink": {
+									"name": "PROJ_INFO_START_DATE"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectStatusDate']"
+								},
+								"sink": {
+									"name": "PROJ_INFO_STATUS_DATE"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectSubject']"
+								},
+								"sink": {
+									"name": "PROJ_PROP_SUBJECT"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectTitle']"
+								},
+								"sink": {
+									"name": "PROJ_PROP_TITLE"
+								}
+							}
+						],
+						"collectionReference": "",
+						"mapComplexValuesToString": false
 					}
-				}
+				},
+				"inputs": [
+					{
+						"referenceName": "RestResource1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ProjectsTable",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"variables": {

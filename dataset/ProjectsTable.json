@@ -1,0 +1,614 @@
+{
+	"name": "ProjectsTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "SiteId",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "PROJ_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "PROJ_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_PROP_AUTHOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_OPT_CALC_ACT_COSTS",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_PROP_CATEGORY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_PROP_COMPANY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_OPT_CRITICAL_SLACK_LIMIT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_OPT_CURRENCY_DIGITS",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_OPT_CURRENCY_POSITION",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_OPT_CURRENCY_SYMBOL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_OPT_CURRENCY_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_OPT_NEW_TASKS_ARE_EFFORT_DRIVEN",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_INFO_CURRENT_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_OPT_DEF_FINISH_TIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_OPT_DEF_FIX_COST_ACCRUAL",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_OPT_MINUTES_PER_DAY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_OPT_MINUTES_PER_WEEK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_OPT_DEF_OVT_RATE",
+				"type": "decimal",
+				"precision": 25,
+				"scale": 6
+			},
+			{
+				"name": "PROJ_OPT_DEF_STD_RATE",
+				"type": "decimal",
+				"precision": 25,
+				"scale": 6
+			},
+			{
+				"name": "PROJ_OPT_DEF_START_TIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_OPT_DEF_TASK_TYPE",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_OPT_DUR_ENTRY_FMT",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_INFO_FINISH_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_OPT_HONOR_CONSTRAINTS",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_PROP_KEYWORDS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_LAST_SAVED",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_PROP_MANAGER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_OPT_MULT_CRITICAL_PATHS",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_CREATION_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_POOL_ATTACHED_TO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_IS_RES_POOL",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_INFO_SCHED_FROM",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_OPT_SPLIT_IN_PROGRESS",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_OPT_SPREAD_ACT_COSTS",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_OPT_SPREAD_PCT_COMP",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_INFO_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_INFO_STATUS_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_PROP_SUBJECT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_PROP_TITLE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_OPT_TASK_UPDATES_RES",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_OPT_WORK_ENTRY_FMT",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_OPT_CALC_SUB_AS_SUMMARY",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_OPT_WEEK_START_DAY",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_OPT_FY_START_MONTH",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_OPT_FY_USE_START_YR",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_OPT_DAYS_PER_MONTH",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_OPT_NEW_TASK_EST",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_OPT_SHOW_EST_DUR",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_OPT_EXPAND_TIMEPHASED",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_EXT_EDITED",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_READ_COUNT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RESERVED_BINARY_DATA",
+				"type": "varbinary"
+			},
+			{
+				"name": "PROJ_TYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_CHECKOUTBY",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "PROJ_CHECKOUTDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_PROJECT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_PROTECTED_ACTUALS_SYNCH",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_ADMINPROJECT",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_IGNORE_FRONT_END",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_TIMESTAMP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WPROJ_DESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WLOCAL_PATH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WPATH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WRES_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "WDSN_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "WPROJ_DELEG_ALLOWED",
+				"type": "bit"
+			},
+			{
+				"name": "WPROJ_IS_NONWORKING",
+				"type": "bit"
+			},
+			{
+				"name": "WPROJ_SCOPE",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "WPROJ_IS_CONSOLIDATED_PROJECT",
+				"type": "bit"
+			},
+			{
+				"name": "WPROJ_RES_CAN_DECLINE",
+				"type": "bit"
+			},
+			{
+				"name": "WPROJ_DEFAULT_PROJ_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "WPROJ_TRACKING_METHOD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WPROJ_LAST_PUB",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "WPROJ_TYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "OPT_DEF_START_TIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "OPT_DEF_FINISH_TIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "WPROJ_STS_SUBWEB_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WSTS_SERVER_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "WPROJ_ISSUE_LIST_NAME",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "WPROJ_RISK_LIST_NAME",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "PROJ_TOTAL_DOC_COUNT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_ACTIVE_ISSUE_COUNT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_ACTIVE_RISK_COUNT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WSS_PWA_ADMIN_ROLE_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WSS_PWA_PROJECT_MANAGER_ROLE_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WSS_PWA_TEAM_MEMBER_ROLE_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WSS_PWA_READER_ROLE_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_PROPOSAL_WORKFLOW_INSTANCE_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "WPROJ_ADMIN_PROJECT",
+				"type": "bit"
+			},
+			{
+				"name": "CAL_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "PROJ_READ_LOCK_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_WRITE_LOCK_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_WRITE_PENDING_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_MOVE_ACTUAL_IF_LATER",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_MOVE_REMAINING_TO_STATUS",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_MOVE_REMAINING_IF_EARLIER",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_MOVE_ACTUAL_TO_STATUS",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_WINPROJ_VERSION_NUMBER",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 10
+			},
+			{
+				"name": "PROJ_VERSION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROGRAM_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "PROJ_DEF_CAL",
+				"type": "varbinary"
+			},
+			{
+				"name": "PROJ_SESSION_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "PROJ_SESSION_DESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_PUBLISH_STATUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DELETED_FLAG",
+				"type": "bit"
+			},
+			{
+				"name": "CAL_UID_BASELINE",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "PROJ_STALE_FLAGS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_WBS_PREFIX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REV_NEXT_SEED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "REV_RANK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_ARCHIVE_RETENTION",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_CURRENT_REV_COUNTER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_CURRENT_REV_RANK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_NEW_TASKS_START_ON_CURRENT_DATE",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_NEW_TASKS_ARE_MANUAL",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_SUMMARY_TASK_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "CREATED_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "MOD_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_REV_COUNTER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MOD_REV_COUNTER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IDEA_WEB_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "IDEA_LIST_UID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "IDEA_ITEM_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROJ_LAST_CHANGE_TOKEN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJ_IS_VISIBILITY_MODE",
+				"type": "bit"
+			},
+			{
+				"name": "WSS_REMOVED",
+				"type": "bit"
+			},
+			{
+				"name": "PROJ_UTILIZATION_TYPE",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "PROJ_UTILIZATION_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJ_IDENTIFIER",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "PROJECTS"
+		}
+	}
+}
