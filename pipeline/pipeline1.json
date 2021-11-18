@@ -1,0 +1,188 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "AKVUsername",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://kvbrismithadf.vault.azure.net/secrets/testusername/91ec9c76e3e24733a8ea3a76cd5dd813?api-version=7.0",
+					"connectVia": {
+						"referenceName": "irbrismithadf",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "AKVUserPwd",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://kvbrismithadf.vault.azure.net/secrets/testuserpwd/b61a983c472247469588ceaa02f22ea3?api-version=7.0",
+					"connectVia": {
+						"referenceName": "irbrismithadf",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "M365Login",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "AKVUsername",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "AKVUserPwd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://login.microsoftonline.com/01ba1a71-c58f-48a6-bc02-5e697e4298e5/oauth2/v2.0/token",
+					"connectVia": {
+						"referenceName": "irbrismithadf",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/x-www-form-urlencoded",
+						"Accept": "*/*",
+						"Connection": "keep-alive"
+					},
+					"body": {
+						"value": "@concat('grant_type=password&client_id=511e6187-47e3-44e9-a1dd-bd61de294503&client_secret=lrW7Q~rmI.51qjj3Rt54PbZeLtBWsqU~YLDud&scope=https://brismith.sharepoint.com/.default&username=',activity('AKVUsername').output.value,'&password=',activity('AKVUserPwd').output.value)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set access token",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "M365Login",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "token",
+					"value": {
+						"value": "@activity('M365Login').output.access_token",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "GetProjects",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Set access token",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://brismith.sharepoint.com/sites/pwa/_api/projectdata/Projects",
+					"connectVia": {
+						"referenceName": "irbrismithadf",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET",
+					"headers": {
+						"Authorization": {
+							"value": "@concat('Bearer ',variables('token'))",
+							"type": "Expression"
+						},
+						"Accept": "*/*",
+						"Accept-Encoding": "gzip, deflate, br",
+						"Connection": "keep-alive"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GetProjects",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "response",
+					"value": {
+						"value": "@activity('GetProjects').output.response",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"token": {
+				"type": "String"
+			},
+			"response": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-11-17T23:50:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

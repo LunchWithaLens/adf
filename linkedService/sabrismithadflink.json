@@ -1,0 +1,22 @@
+{
+	"name": "sabrismithadflink",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AKV1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sabrismithadfconnectionstring"
+			}
+		},
+		"connectVia": {
+			"referenceName": "irbrismithadf",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

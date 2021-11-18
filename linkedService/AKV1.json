@@ -1,0 +1,11 @@
+{
+	"name": "AKV1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kvbrismithadf.vault.azure.net/"
+		}
+	}
+}

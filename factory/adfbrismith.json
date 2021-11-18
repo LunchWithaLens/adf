@@ -1,0 +1,9 @@
+{
+	"name": "adfbrismith",
+	"location": "westus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c5ddf20d-42d6-4d9d-9948-255c2e4e278b",
+		"tenantId": "3b5f9a90-22e7-41e6-9b17-e725d47e82d0"
+	}
+}
