@@ -13,6 +13,10 @@
 					"value": "**********"
 				}
 			}
+		},
+		"connectVia": {
+			"referenceName": "irbrismithadf",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
