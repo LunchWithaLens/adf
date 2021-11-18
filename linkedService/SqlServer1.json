@@ -1,0 +1,21 @@
+{
+	"name": "SqlServer1",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AKV1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "adfsqlConnection"
+			}
+		},
+		"connectVia": {
+			"referenceName": "irbrismithadf",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
