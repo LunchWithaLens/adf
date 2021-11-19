@@ -194,7 +194,7 @@
 				]
 			},
 			{
-				"name": "Copy data1_copy1",
+				"name": "Read OData and Populate Staging",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -240,15 +240,62 @@
 									"path": "['ProjectId']"
 								},
 								"sink": {
-									"name": "PROJ_UID"
+									"name": "ProjectId",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['ProjectAuthorName']"
+									"path": "['ProjectActualCost']"
 								},
 								"sink": {
-									"name": "PROJ_PROP_AUTHOR"
+									"name": "ProjectActualCost",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectActualDuration']"
+								},
+								"sink": {
+									"name": "ProjectActualDuration",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectActualFinishDate']"
+								},
+								"sink": {
+									"name": "ProjectActualFinishDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectActualStartDate']"
+								},
+								"sink": {
+									"name": "ProjectActualStartDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectActualWork']"
+								},
+								"sink": {
+									"name": "ProjectActualWork",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectCost']"
+								},
+								"sink": {
+									"name": "ProjectCost",
+									"type": "Decimal"
 								}
 							},
 							{
@@ -256,7 +303,8 @@
 									"path": "['ProjectCreatedDate']"
 								},
 								"sink": {
-									"name": "PROJ_CREATION_DATE"
+									"name": "ProjectCreatedDate",
+									"type": "DateTime"
 								}
 							},
 							{
@@ -264,7 +312,8 @@
 									"path": "['ProjectCurrency']"
 								},
 								"sink": {
-									"name": "PROJ_OPT_CURRENCY_CODE"
+									"name": "ProjectCurrency",
+									"type": "String"
 								}
 							},
 							{
@@ -272,7 +321,17 @@
 									"path": "['ProjectDescription']"
 								},
 								"sink": {
-									"name": "WPROJ_DESCRIPTION"
+									"name": "ProjectDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectDuration']"
+								},
+								"sink": {
+									"name": "ProjectDuration",
+									"type": "Decimal"
 								}
 							},
 							{
@@ -280,7 +339,8 @@
 									"path": "['ProjectFinishDate']"
 								},
 								"sink": {
-									"name": "PROJ_INFO_FINISH_DATE"
+									"name": "ProjectFinishDate",
+									"type": "DateTime"
 								}
 							},
 							{
@@ -288,7 +348,8 @@
 									"path": "['ProjectIdentifier']"
 								},
 								"sink": {
-									"name": "PROJ_IDENTIFIER"
+									"name": "ProjectIdentifier",
+									"type": "String"
 								}
 							},
 							{
@@ -296,7 +357,8 @@
 									"path": "['ProjectLastPublishedDate']"
 								},
 								"sink": {
-									"name": "WPROJ_LAST_PUB"
+									"name": "ProjectLastPublishedDate",
+									"type": "DateTime"
 								}
 							},
 							{
@@ -304,7 +366,8 @@
 									"path": "['ProjectModifiedDate']"
 								},
 								"sink": {
-									"name": "MOD_DATE"
+									"name": "ProjectModifiedDate",
+									"type": "DateTime"
 								}
 							},
 							{
@@ -312,7 +375,26 @@
 									"path": "['ProjectName']"
 								},
 								"sink": {
-									"name": "PROJ_NAME"
+									"name": "ProjectName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectPercentCompleted']"
+								},
+								"sink": {
+									"name": "ProjectPercentCompleted",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectPercentWorkCompleted']"
+								},
+								"sink": {
+									"name": "ProjectPercentWorkCompleted",
+									"type": "Int32"
 								}
 							},
 							{
@@ -320,15 +402,26 @@
 									"path": "['ProjectStartDate']"
 								},
 								"sink": {
-									"name": "PROJ_INFO_START_DATE"
+									"name": "ProjectStartDate",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"path": "['ProjectTitle']"
+									"path": "['ProjectStatusDate']"
 								},
 								"sink": {
-									"name": "PROJ_PROP_TITLE"
+									"name": "ProjectStatusDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectWork']"
+								},
+								"sink": {
+									"name": "ProjectWork",
+									"type": "Decimal"
 								}
 							}
 						],
