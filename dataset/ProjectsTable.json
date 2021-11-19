@@ -608,7 +608,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "PROJECTS"
+			"table": "EpmProjectStage"
 		}
 	}
 }
