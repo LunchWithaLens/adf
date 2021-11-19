@@ -11,17 +11,17 @@
 			"type": "string",
 			"defaultValue": "https://kvbrismithadf.vault.azure.net/"
 		},
-		"sabrismithadflink_properties_typeProperties_connectionString_secretName": {
-			"type": "string",
-			"defaultValue": "sabrismithadfconnectionstring"
-		},
 		"PJOOData_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://brismith.sharepoint.com/sites/pwa/_api/ProjectData/Projects"
+			"defaultValue": "https://brismith.sharepoint.com/sites/pwa/_api/ProjectData/Projects?$select=ProjectId,ProjectActualCost,ProjectActualDuration,ProjectActualFinishDate,ProjectActualStartDate,ProjectActualWork,ProjectCost,ProjectCreatedDate,ProjectCurrency,ProjectDescription,ProjectDuration,ProjectFinishDate,ProjectIdentifier,ProjectLastPublishedDate,ProjectModifiedDate,ProjectName,ProjectPercentCompleted,ProjectPercentWorkCompleted,ProjectStartDate,ProjectStatusDate,ProjectWork"
 		},
 		"SqlServer1_properties_typeProperties_connectionString_secretName": {
 			"type": "string",
 			"defaultValue": "adfsqlConnection"
+		},
+		"sabrismithadflink_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "sabrismithadfconnectionstring"
 		},
 		"containerUri": {
 			"type": "string",
@@ -56,11 +56,11 @@
 					"PJOOData_properties_typeProperties_url": {
 						"value": "[parameters('PJOOData_properties_typeProperties_url')]"
 					},
-					"sabrismithadflink_properties_typeProperties_connectionString_secretName": {
-						"value": "[parameters('sabrismithadflink_properties_typeProperties_connectionString_secretName')]"
-					},
 					"SqlServer1_properties_typeProperties_connectionString_secretName": {
 						"value": "[parameters('SqlServer1_properties_typeProperties_connectionString_secretName')]"
+					},
+					"sabrismithadflink_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('sabrismithadflink_properties_typeProperties_connectionString_secretName')]"
 					}
 				}
 			},
