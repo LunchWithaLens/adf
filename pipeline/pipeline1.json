@@ -134,7 +134,7 @@
 				}
 			},
 			{
-				"name": "Copy data1",
+				"name": "Read OData and save to Blob",
 				"type": "Copy",
 				"dependsOn": [
 					{
