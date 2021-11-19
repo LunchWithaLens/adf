@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfbrismith"
+		},
+		"AKV1_properties_typeProperties_baseUrl": {
+			"value": "https://kvbrismithadf.vault.azure.net/"
+		},
+		"sabrismithadflink_properties_typeProperties_connectionString_secretName": {
+			"value": "sabrismithadfconnectionstring"
+		},
+		"PJOOData_properties_typeProperties_url": {
+			"value": "https://brismith.sharepoint.com/sites/pwa/_api/ProjectData/Projects"
+		},
+		"SqlServer1_properties_typeProperties_connectionString_secretName": {
+			"value": "adfsqlConnection"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

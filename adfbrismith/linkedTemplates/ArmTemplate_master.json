@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfbrismith"
+		},
+		"AKV1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kvbrismithadf.vault.azure.net/"
+		},
+		"sabrismithadflink_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "sabrismithadfconnectionstring"
+		},
+		"PJOOData_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://brismith.sharepoint.com/sites/pwa/_api/ProjectData/Projects"
+		},
+		"SqlServer1_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "adfsqlConnection"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfbrismith_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AKV1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AKV1_properties_typeProperties_baseUrl')]"
+					},
+					"PJOOData_properties_typeProperties_url": {
+						"value": "[parameters('PJOOData_properties_typeProperties_url')]"
+					},
+					"sabrismithadflink_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('sabrismithadflink_properties_typeProperties_connectionString_secretName')]"
+					},
+					"SqlServer1_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_connectionString_secretName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
