@@ -198,7 +198,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Clear staging",
+						"activity": "Clear Project Staging",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -518,7 +518,7 @@
 				}
 			},
 			{
-				"name": "Clear staging",
+				"name": "Clear Project Staging",
 				"description": "Delete all rows from the Project staging table",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
