@@ -1024,7 +1024,7 @@
 						"type": "Copy",
 						"dependsOn": [
 							{
-								"activity": "Set access token",
+								"activity": "Clear Project Staging",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -1347,6 +1347,34 @@
 								"resource": "https://vault.azure.net"
 							}
 						}
+					},
+					{
+						"name": "Clear Project Staging",
+						"description": "Delete all rows from the Project staging table",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Set access token",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_adf_deleteProjectStagingRows]"
+						},
+						"linkedServiceName": {
+							"referenceName": "SqlServer1",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
 				"policy": {
@@ -1368,7 +1396,8 @@
 				"[concat(variables('factoryId'), '/integrationRuntimes/irbrismithadf')]",
 				"[concat(variables('factoryId'), '/datasets/RestResource1')]",
 				"[concat(variables('factoryId'), '/datasets/Json1')]",
-				"[concat(variables('factoryId'), '/datasets/ProjectsTable')]"
+				"[concat(variables('factoryId'), '/datasets/ProjectsTable')]",
+				"[concat(variables('factoryId'), '/linkedServices/SqlServer1')]"
 			]
 		}
 	]
