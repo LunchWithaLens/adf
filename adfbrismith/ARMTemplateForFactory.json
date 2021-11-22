@@ -43,7 +43,7 @@
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": true,
-							"secureInput": false
+							"secureInput": true
 						},
 						"userProperties": [],
 						"typeProperties": {
@@ -69,7 +69,7 @@
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": true,
-							"secureInput": false
+							"secureInput": true
 						},
 						"userProperties": [],
 						"typeProperties": {
@@ -126,7 +126,7 @@
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": true,
-							"secureInput": false
+							"secureInput": true
 						},
 						"userProperties": [],
 						"typeProperties": {
@@ -183,7 +183,7 @@
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": false,
-							"secureInput": false
+							"secureInput": true
 						},
 						"userProperties": [],
 						"typeProperties": {
@@ -245,7 +245,7 @@
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": false,
-							"secureInput": false
+							"secureInput": true
 						},
 						"userProperties": [],
 						"typeProperties": {
@@ -488,8 +488,8 @@
 							"timeout": "7.00:00:00",
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
+							"secureOutput": true,
+							"secureInput": true
 						},
 						"userProperties": [],
 						"typeProperties": {
@@ -514,8 +514,8 @@
 							"timeout": "7.00:00:00",
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
+							"secureOutput": true,
+							"secureInput": true
 						},
 						"userProperties": [],
 						"typeProperties": {
@@ -540,8 +540,8 @@
 							"timeout": "7.00:00:00",
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
+							"secureOutput": true,
+							"secureInput": true
 						},
 						"userProperties": [],
 						"typeProperties": {
