@@ -8,7 +8,7 @@ The out of the box OData connector for ADF does not support an ROPC (Resource Ow
 and for Project Online OData this type of grant is required as just an App Id is not supported.  
 It needs App Id and an identified user, so in this case ROPC is the only option.
 
-The example hold the username, passowrd and secrets of the App registration in Azure Key Vault.  
+The example hold the username, password and secrets of the App registration in Azure Key Vault.  
 I also stored the Client ID and scope there, although this isn't really 'secret'.
 
 A web activity makes the call with the required grant type set in the body.  The returned token is stored in a variable.
