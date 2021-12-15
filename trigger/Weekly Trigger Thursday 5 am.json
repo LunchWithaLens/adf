@@ -1,9 +1,16 @@
 {
-	"name": "Weekly Trigger Monday 5 am",
+	"name": "Weekly Trigger Thursday 5 am",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [],
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
@@ -19,7 +26,7 @@
 						5
 					],
 					"weekDays": [
-						"Monday"
+						"Thursday"
 					]
 				}
 			}
