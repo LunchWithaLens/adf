@@ -1400,7 +1400,7 @@
 							"type": "LinkedServiceReference"
 						},
 						"secretName": "[parameters('SqlServer1_properties_typeProperties_connectionString_secretName')]",
-						"secretVersion": "36568dc9b15a4ff99946b47c37b48005"
+						"secretVersion": "a5a7927fa0744004aff9e0a8ca21862b"
 					}
 				},
 				"connectVia": {
@@ -1441,7 +1441,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Weekly Trigger Monday 5 am')]",
+			"name": "[concat(parameters('factoryName'), '/Weekly Trigger Thursday 5 am')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1471,7 +1471,7 @@
 								5
 							],
 							"weekDays": [
-								"Monday"
+								"Thursday"
 							]
 						}
 					}
