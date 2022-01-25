@@ -1,0 +1,9 @@
+{
+	"name": "ADFbrismithSPARK",
+	"location": "westus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3e7e9ca2-60eb-49e9-bee1-7e633e2534b7",
+		"tenantId": "3b5f9a90-22e7-41e6-9b17-e725d47e82d0"
+	}
+}

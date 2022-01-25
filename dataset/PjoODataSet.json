@@ -1,0 +1,13 @@
+{
+	"name": "PjoODataSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "PjoOdata",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

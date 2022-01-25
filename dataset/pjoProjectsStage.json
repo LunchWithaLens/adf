@@ -1,0 +1,132 @@
+{
+	"name": "pjoProjectsStage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AuroraDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ProjectId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectActualCost",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "ProjectActualDuration",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "ProjectActualFinishDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ProjectActualStartDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ProjectActualWork",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "ProjectCost",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "ProjectCreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ProjectCurrency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectDuration",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "ProjectFinishDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ProjectIdentifier",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectLastPublishedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ProjectModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ProjectName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectPercentCompleted",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ProjectPercentWorkCompleted",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ProjectStartDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ProjectStatusDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ProjectWork",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "PjoProjectStage"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

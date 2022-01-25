@@ -1,0 +1,13 @@
+{
+	"name": "PjoOdata",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://brismithpfw.sharepoint.com/sites/pwa/_api/ProjectData/Projects?$select=ProjectId,ProjectActualCost,ProjectActualDuration,ProjectActualFinishDate,ProjectActualStartDate,ProjectActualWork,ProjectCost,ProjectCreatedDate,ProjectCurrency,ProjectDescription,ProjectDuration,ProjectFinishDate,ProjectIdentifier,ProjectLastPublishedDate,ProjectModifiedDate,ProjectName,ProjectPercentCompleted,ProjectPercentWorkCompleted,ProjectStartDate,ProjectStatusDate,ProjectWork",
+			"enableServerCertificateValidation": false,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
