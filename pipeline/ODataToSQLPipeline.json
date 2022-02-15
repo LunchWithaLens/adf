@@ -344,11 +344,6 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['odata.metadata']"
-								}
-							},
-							{
-								"source": {
 									"path": "['ProjectId']"
 								},
 								"sink": {
