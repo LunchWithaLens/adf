@@ -344,7 +344,12 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectId']"
+									"path": "$['odata.metadata']"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProjectId']"
 								},
 								"sink": {
 									"name": "ProjectId",
@@ -353,7 +358,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectActualCost']"
+									"path": "['ProjectActualCost']"
 								},
 								"sink": {
 									"name": "ProjectActualCost",
@@ -362,7 +367,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectActualDuration']"
+									"path": "['ProjectActualDuration']"
 								},
 								"sink": {
 									"name": "ProjectActualDuration",
@@ -371,7 +376,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectActualFinishDate']"
+									"path": "['ProjectActualFinishDate']"
 								},
 								"sink": {
 									"name": "ProjectActualFinishDate",
@@ -380,7 +385,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectActualStartDate']"
+									"path": "['ProjectActualStartDate']"
 								},
 								"sink": {
 									"name": "ProjectActualStartDate",
@@ -389,7 +394,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectActualWork']"
+									"path": "['ProjectActualWork']"
 								},
 								"sink": {
 									"name": "ProjectActualWork",
@@ -398,7 +403,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectCost']"
+									"path": "['ProjectCost']"
 								},
 								"sink": {
 									"name": "ProjectCost",
@@ -407,7 +412,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectCreatedDate']"
+									"path": "['ProjectCreatedDate']"
 								},
 								"sink": {
 									"name": "ProjectCreatedDate",
@@ -416,7 +421,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectCurrency']"
+									"path": "['ProjectCurrency']"
 								},
 								"sink": {
 									"name": "ProjectCurrency",
@@ -425,7 +430,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectDescription']"
+									"path": "['ProjectDescription']"
 								},
 								"sink": {
 									"name": "ProjectDescription",
@@ -434,7 +439,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectDuration']"
+									"path": "['ProjectDuration']"
 								},
 								"sink": {
 									"name": "ProjectDuration",
@@ -443,7 +448,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectFinishDate']"
+									"path": "['ProjectFinishDate']"
 								},
 								"sink": {
 									"name": "ProjectFinishDate",
@@ -452,7 +457,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectIdentifier']"
+									"path": "['ProjectIdentifier']"
 								},
 								"sink": {
 									"name": "ProjectIdentifier",
@@ -461,7 +466,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectLastPublishedDate']"
+									"path": "['ProjectLastPublishedDate']"
 								},
 								"sink": {
 									"name": "ProjectLastPublishedDate",
@@ -470,7 +475,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectModifiedDate']"
+									"path": "['ProjectModifiedDate']"
 								},
 								"sink": {
 									"name": "ProjectModifiedDate",
@@ -479,7 +484,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectName']"
+									"path": "['ProjectName']"
 								},
 								"sink": {
 									"name": "ProjectName",
@@ -488,7 +493,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectPercentCompleted']"
+									"path": "['ProjectPercentCompleted']"
 								},
 								"sink": {
 									"name": "ProjectPercentCompleted",
@@ -497,7 +502,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectPercentWorkCompleted']"
+									"path": "['ProjectPercentWorkCompleted']"
 								},
 								"sink": {
 									"name": "ProjectPercentWorkCompleted",
@@ -506,7 +511,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectStartDate']"
+									"path": "['ProjectStartDate']"
 								},
 								"sink": {
 									"name": "ProjectStartDate",
@@ -515,7 +520,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectStatusDate']"
+									"path": "['ProjectStatusDate']"
 								},
 								"sink": {
 									"name": "ProjectStatusDate",
@@ -524,7 +529,7 @@
 							},
 							{
 								"source": {
-									"path": "$['value'][0]['ProjectWork']"
+									"path": "['ProjectWork']"
 								},
 								"sink": {
 									"name": "ProjectWork",
@@ -533,7 +538,7 @@
 							}
 						],
 						"collectionReference": "$['value']",
-						"mapComplexValuesToString": true
+						"mapComplexValuesToString": false
 					}
 				},
 				"inputs": [
