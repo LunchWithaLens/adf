@@ -114,63 +114,6 @@
 				}
 			},
 			{
-				"name": "M365Login",
-				"type": "WebActivity",
-				"dependsOn": [
-					{
-						"activity": "AKVUserName",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "AKVUserPassword",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "AKVPjoClientId",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "AKVPjoODataSecret",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "AKVPjoScope",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"url": "https://login.microsoftonline.com/7c76b1d9-8e15-40c9-be1b-65328c3f5a26/oauth2/v2.0/token",
-					"method": "POST",
-					"headers": {
-						"Content-Type": "application/x-www-form-urlencoded",
-						"Accept": "*/*",
-						"Connection": "keep-alive"
-					},
-					"body": {
-						"value": "@concat('grant_type=password&client_id=',activity('AKVPjoClientId').output.value,'&client_secret=',activity('AKVPjoODataSecret').output.value,'&scope=',activity('AKVPjoScope').output.value,'&username=',activity('AKVUserName').output.value,'&password=',activity('AKVUserPassword').output.value)",
-						"type": "Expression"
-					}
-				}
-			},
-			{
 				"name": "Set access token",
 				"type": "SetVariable",
 				"dependsOn": [
@@ -216,255 +159,6 @@
 					"referenceName": "AuroraDB",
 					"type": "LinkedServiceReference"
 				}
-			},
-			{
-				"name": "Read OData and write to Staging",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Clear staging table",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "RestSource",
-						"httpRequestTimeout": "00:01:40",
-						"requestInterval": "00.00:00:00.010",
-						"requestMethod": "GET",
-						"additionalHeaders": {
-							"Authorization": {
-								"value": "@concat('Bearer ', variables('token'))",
-								"type": "Expression"
-							}
-						},
-						"paginationRules": {
-							"supportRFC5988": "true"
-						}
-					},
-					"sink": {
-						"type": "SqlServerSink"
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "['ProjectId']"
-								},
-								"sink": {
-									"name": "ProjectId",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectActualCost']"
-								},
-								"sink": {
-									"name": "ProjectActualCost",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectActualDuration']"
-								},
-								"sink": {
-									"name": "ProjectActualDuration",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectActualFinishDate']"
-								},
-								"sink": {
-									"name": "ProjectActualFinishDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectActualStartDate']"
-								},
-								"sink": {
-									"name": "ProjectActualStartDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectActualWork']"
-								},
-								"sink": {
-									"name": "ProjectActualWork",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectCost']"
-								},
-								"sink": {
-									"name": "ProjectCost",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectCreatedDate']"
-								},
-								"sink": {
-									"name": "ProjectCreatedDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectCurrency']"
-								},
-								"sink": {
-									"name": "ProjectCurrency",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectDescription']"
-								},
-								"sink": {
-									"name": "ProjectDescription",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectDuration']"
-								},
-								"sink": {
-									"name": "ProjectDuration",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectFinishDate']"
-								},
-								"sink": {
-									"name": "ProjectFinishDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectIdentifier']"
-								},
-								"sink": {
-									"name": "ProjectIdentifier",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectLastPublishedDate']"
-								},
-								"sink": {
-									"name": "ProjectLastPublishedDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectModifiedDate']"
-								},
-								"sink": {
-									"name": "ProjectModifiedDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectName']"
-								},
-								"sink": {
-									"name": "ProjectName",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectPercentCompleted']"
-								},
-								"sink": {
-									"name": "ProjectPercentCompleted",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectPercentWorkCompleted']"
-								},
-								"sink": {
-									"name": "ProjectPercentWorkCompleted",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectStartDate']"
-								},
-								"sink": {
-									"name": "ProjectStartDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectStatusDate']"
-								},
-								"sink": {
-									"name": "ProjectStatusDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"path": "['ProjectWork']"
-								},
-								"sink": {
-									"name": "ProjectWork",
-									"type": "Decimal"
-								}
-							}
-						],
-						"collectionReference": "$['value']",
-						"mapComplexValuesToString": false
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "PjoODataSet",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "pjoProjectsStage",
-						"type": "DatasetReference"
-					}
-				]
 			},
 			{
 				"name": "Remove Deleted Projects",
@@ -546,6 +240,314 @@
 					"referenceName": "AuroraDB",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "M365Login",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "AKVPjoClientId",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "AKVUserName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "AKVUserPassword",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "AKVPjoODataSecret",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "AKVPjoScope",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://login.microsoftonline.com/7c76b1d9-8e15-40c9-be1b-65328c3f5a26/oauth2/v2.0/token",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/x-www-form-urlencoded",
+						"Accept": "*/*",
+						"Connection": "keep-alive"
+					},
+					"body": {
+						"value": "@concat('grant_type=password&client_id=',activity('AKVPjoClientId').output.value,'&client_secret=',activity('AKVPjoODataSecret').output.value,'&scope=',activity('AKVPjoScope').output.value,'&username=',activity('AKVUserName').output.value,'&password=',activity('AKVUserPassword').output.value)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Read OData and write to Staging",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Clear staging table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"additionalHeaders": {
+							"Authorization": {
+								"value": "@concat('Bearer ',variables('token'))",
+								"type": "Expression"
+							}
+						},
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": true
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectId']"
+								},
+								"sink": {
+									"name": "ProjectId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualCost']"
+								},
+								"sink": {
+									"name": "ProjectActualCost",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualDuration']"
+								},
+								"sink": {
+									"name": "ProjectActualDuration",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualFinishDate']"
+								},
+								"sink": {
+									"name": "ProjectActualFinishDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualStartDate']"
+								},
+								"sink": {
+									"name": "ProjectActualStartDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectActualWork']"
+								},
+								"sink": {
+									"name": "ProjectActualWork",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCost']"
+								},
+								"sink": {
+									"name": "ProjectCost",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCreatedDate']"
+								},
+								"sink": {
+									"name": "ProjectCreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectCurrency']"
+								},
+								"sink": {
+									"name": "ProjectCurrency",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectDescription']"
+								},
+								"sink": {
+									"name": "ProjectDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectDuration']"
+								},
+								"sink": {
+									"name": "ProjectDuration",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectFinishDate']"
+								},
+								"sink": {
+									"name": "ProjectFinishDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectIdentifier']"
+								},
+								"sink": {
+									"name": "ProjectIdentifier",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectLastPublishedDate']"
+								},
+								"sink": {
+									"name": "ProjectLastPublishedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectModifiedDate']"
+								},
+								"sink": {
+									"name": "ProjectModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectName']"
+								},
+								"sink": {
+									"name": "ProjectName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectPercentCompleted']"
+								},
+								"sink": {
+									"name": "ProjectPercentCompleted",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectPercentWorkCompleted']"
+								},
+								"sink": {
+									"name": "ProjectPercentWorkCompleted",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectStartDate']"
+								},
+								"sink": {
+									"name": "ProjectStartDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectStatusDate']"
+								},
+								"sink": {
+									"name": "ProjectStatusDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value'][0]['ProjectWork']"
+								},
+								"sink": {
+									"name": "ProjectWork",
+									"type": "Decimal"
+								}
+							}
+						],
+						"collectionReference": "$['value']",
+						"mapComplexValuesToString": true
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "PjoODataSet",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "pjoProjectsStage",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"variables": {
