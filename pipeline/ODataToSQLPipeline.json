@@ -242,63 +242,6 @@
 				}
 			},
 			{
-				"name": "M365Login",
-				"type": "WebActivity",
-				"dependsOn": [
-					{
-						"activity": "AKVPjoClientId",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "AKVUserName",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "AKVUserPassword",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "AKVPjoODataSecret",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "AKVPjoScope",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"url": "https://login.microsoftonline.com/7c76b1d9-8e15-40c9-be1b-65328c3f5a26/oauth2/v2.0/token",
-					"method": "POST",
-					"headers": {
-						"Content-Type": "application/x-www-form-urlencoded",
-						"Accept": "*/*",
-						"Connection": "keep-alive"
-					},
-					"body": {
-						"value": "@concat('grant_type=password&client_id=',activity('AKVPjoClientId').output.value,'&client_secret=',activity('AKVPjoODataSecret').output.value,'&scope=',activity('AKVPjoScope').output.value,'&username=',activity('AKVUserName').output.value,'&password=',activity('AKVUserPassword').output.value)",
-						"type": "Expression"
-					}
-				}
-			},
-			{
 				"name": "Read OData and write to Staging",
 				"type": "Copy",
 				"dependsOn": [
@@ -548,6 +491,63 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "M365Login",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "AKVUserName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "AKVUserPassword",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "AKVPjoClientId",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "AKVPjoODataSecret",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "AKVPjoScope",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://login.microsoftonline.com/7c76b1d9-8e15-40c9-be1b-65328c3f5a26/oauth2/v2.0/token",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/x-www-form-urlencoded",
+						"Accept": "*/*",
+						"Connection": "keep-alive"
+					},
+					"body": {
+						"value": "@concat('grant_type=password&client_id=',activity('AKVPjoClientId').output.value,'&client_secret=',activity('AKVPjoODataSecret').output.value,'&scope=',activity('AKVPjoScope').output.value,'&username=',activity('AKVUserName').output.value,'&password=',activity('AKVUserPassword').output.value)",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
