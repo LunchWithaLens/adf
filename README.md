@@ -2,7 +2,7 @@
 
 In this example only the project data is being read and only a subset of columns, using $select in the Url.  
 All of the records are written to a staging table.
-Currently this is a one-off process with no detection of difference or incremental loads, it is really aimed at getting the authentication working.
+Currently this is a one-off process with no detection of difference or incremental loads, it is really aimed at getting the authentication working. In a real world scenario you may also need to deal with a paged response - and follow new OData Urls from the 1st page.
 
 The out of the box OData connector for ADF does not support an ROPC (Resource Owner Password Credentials) OAuth2 connection, 
 and for Project Online OData this type of grant is required as just an App Id is not supported.  
