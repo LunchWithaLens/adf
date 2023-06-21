@@ -124,6 +124,12 @@
 						]
 					}
 				],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "token",
@@ -455,7 +461,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://kvbrismithadf.vault.azure.net/secrets/pjoodataclientid/80ae9f2937ee49668540c5b29c86ed9c?api-version=7.0",
+					"url": "https://kvbrismithadf.vault.azure.net/secrets/pjoodataclientid/e6aeca2a8c0f45e0857a17ac7de6a173",
 					"connectVia": {
 						"referenceName": "irbrismithadf",
 						"type": "IntegrationRuntimeReference"
