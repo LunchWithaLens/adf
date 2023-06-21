@@ -461,7 +461,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://kvbrismithadf.vault.azure.net/secrets/pjoodataclientid/e6aeca2a8c0f45e0857a17ac7de6a173",
+					"url": "https://kvbrismithadf.vault.azure.net/secrets/pjoodataclientid/e6aeca2a8c0f45e0857a17ac7de6a173?api-version=7.0",
 					"connectVia": {
 						"referenceName": "irbrismithadf",
 						"type": "IntegrationRuntimeReference"
@@ -486,7 +486,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://kvbrismithadf.vault.azure.net/secrets/pjoodatasecret/0af6770fba1d47a983aac08e1e51b9fc",
+					"url": "https://kvbrismithadf.vault.azure.net/secrets/pjoodatasecret/0af6770fba1d47a983aac08e1e51b9fc?api-version=7.0",
 					"connectVia": {
 						"referenceName": "irbrismithadf",
 						"type": "IntegrationRuntimeReference"
